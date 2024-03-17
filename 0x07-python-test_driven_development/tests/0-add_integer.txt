@@ -1,0 +1,100 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
+#TypeError
+
+	### a and b must be integers or floats
+
+	>>> add_integer("Holberton", 98)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(98, "School")
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+	>>> add_integer("Holberton", "School")
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer()
+	Traceback (most recent call last):
+	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+	## Floating Point Special Values
+
+
+
+#OverflowError
+
+	>>> add_integer(1e300**2, 1e300000)
+	Traceback (most recent call last):
+	OverflowError: (34, 'Numerical result out of range')
+
+	>>> add_integer(float('-inf'))
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
+
+	>>> add_integer(float('inf'))
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
+
+
+
+#ValueError
+
+	>>> add_integer(float('nan'))
+	Traceback (most recent call last):
+	ValueError: cannot convert float NaN to integer
+
+
+
+#General Case
+
+	#Cases with 2 integers as parameters.
+
+	>>> add_integer(0)
+	98
+
+	>>> add_integer(98, 0)
+	98
+
+	>>> add_integer(100, -2)
+	98
+
+	>>> add_integer(-30, 128)
+	98
+
+	>>> add_integer(-50, -48)
+	-98
+
+	#Cases with a integer and a float as parameters.
+
+	>>> add_integer(98.7, 0)
+	98
+
+	>>> add_integer(100, -2.54)
+	98
+
+	>>> add_integer(-30, 128.1)
+	98
+
+	>>> add_integer(-50.11, -48)
+	-98
+
+	#Cases with 2 floats as parameters.
+
+	>>> add_integer(98.7, 0.9)
+	98
+
+	>>> add_integer(100.45, -2.54)
+	98
+
+	>>> add_integer(-30.0, 128.1)
+	98
+
+	>>> add_integer(-50.11, -48.87)
+	-98
